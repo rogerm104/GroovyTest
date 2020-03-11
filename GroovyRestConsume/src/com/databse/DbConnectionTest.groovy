@@ -26,7 +26,7 @@ def insertoperation= {
 def updateOperation= {
 	def count
 	sql.withInstance(dbConnParams) {
-		count = sql.executeUpdate("UPDATE groovyTest SET URL = 'https://  URL'")
+		count = sql.executeUpdate("UPDATE groovyTest SET URL = 'https://  URL'");
 	}
 	println count
 }
@@ -34,13 +34,13 @@ def updateOperation= {
 
 def selectOperation = {
 	sql.eachRow("SELECT * FROM groovyTest") { GroovyResultSet rs ->
-		println rs.getString("ID") + " "+ rs.getString("URL") +" "+rs.getString("NAME")
-		println rs.ID
+		println rs.getString("ID") + " "+ rs.getString("URL") +" "+rs.getString("NAME");
+		println rs.ID;
 
 	}
 }
 
-selectOperation.run()
+selectOperation.run();
 
 
 

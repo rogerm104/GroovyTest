@@ -1,5 +1,8 @@
 package com.soapconsume
 
+import org.apache.http.HttpResponse
+import org.apache.http.client.HttpClient
+
 String wsSOAPURL="http://www.dneonline.com/calculator.asmx";
 URL uri = new URL(wsSOAPURL);
 URLConnection soapEndpoint = uri.openConnection();
@@ -38,16 +41,18 @@ soapOutputStream.write(b);
 soapOutputStream.close();
 //Ready with sending the request.
 //Read the response.
-println httpsoapEndpoint.getResponseCode()
+println "Status code :" +httpsoapEndpoint.getResponseCode()
 if(httpsoapEndpoint.getResponseCode()==200) {
-InputStreamReader isr = new InputStreamReader(httpsoapEndpoint.getInputStream());
+	InputStreamReader isr = new InputStreamReader(httpsoapEndpoint.getInputStream());
 
-BufferedReader br = new BufferedReader(isr)
-String line;
-//br.println()
-while((line = br.readLine())!=null) {
-	println  line;
-}
+	BufferedReader br = new BufferedReader(isr)
+	String linet,line;
+	//br.println()
+	while((line = br.readLine())!=null) {
+		linet= linet+line;
+	}
+	println "OUTPUT:" +linet
+
 }else {
 	httpsoapEndpoint.getErrorStream()
 }
